@@ -65,6 +65,7 @@ public class Control {
         sc.nextLine();
         System.out.println("Czy posiada alkohol? [true/false]");
         boolean isAlcohol = sc.nextBoolean();
+        sc.nextLine();
 
         Drink drink = new Drink(name, price, isAlcohol);
         storage.addDrink(drink);
