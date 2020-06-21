@@ -1,11 +1,16 @@
 package homework.barman;
 
 public enum Options {
-    PERSON("Wprowadz osobe."), DRINK("Wprowadz drinka."), ORDER("Podaj jakiego drinka zamawiasz.");
+    PERSON(1,"Wprowadz osobe."),
+    DRINK(2,"Wprowadz drinka."),
+    ORDER(3,"Podaj jakiego drinka zamawiasz."),
+    EXIT(4, "Wyjscie z programu" );
 
+    int value;
     String description;
 
-    Options(String description) {
+    Options(int value, String description) {
+        this.value = value;
         this.description = description;
     }
 
