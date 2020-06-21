@@ -6,9 +6,9 @@ public class Control {
     Storage storage = new Storage();
 
     Scanner sc = new Scanner(System.in);
-    public Control() {
 
 
+        public void controlLoop(){
         Options options;
         do {
 
@@ -78,6 +78,7 @@ public class Control {
 
     public void exit() {
         System.out.println("Do zobaczenia.");
+        sc.close();
     }
 
 }
