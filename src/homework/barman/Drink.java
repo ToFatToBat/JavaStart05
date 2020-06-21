@@ -5,6 +5,10 @@ public class Drink {
     private double price;
     private boolean isAlcohol;
 
+    public Drink() {
+
+    }
+
     public Drink(String name, double price, boolean isAlcohol) {
         this.name = name;
         this.price = price;

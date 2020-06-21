@@ -7,8 +7,11 @@ public class Control {
 
     Scanner sc = new Scanner(System.in);
 
+    Person chosenPerson = new Person();
+    Drink chosenDrink = new Drink();
 
-        public void controlLoop(){
+
+    public void controlLoop() {
         Options options;
         do {
 
@@ -51,7 +54,7 @@ public class Control {
         int age = sc.nextInt();
         sc.nextLine();
 
-        Person person= new  Person(name, surname, age);
+        Person person = new Person(name, surname, age);
         storage.addPerson(person);
         return person;
 
@@ -72,20 +75,53 @@ public class Control {
         return drink;
     }
 
-    public void readAndCreateOrder() {
-        System.out.println("Aby zlozyc zamowienie wybiez osobe:");
-        for (Person p: storage.persons){
-            System.out.println(p);
-        }
-        System.out.println("Wybierz drinka: ");
-        for (Drink d: storage.drinks){
-            System.out.println(d);
-        }
+    public Barman readAndCreateOrder() {
+        choosePersonByName();
+        chooseDrinkByName();
+        Barman barman = new Barman();
+        return barman.order(chosenPerson, chosenDrink);
+
     }
+
 
     public void exit() {
         System.out.println("Do zobaczenia.");
         sc.close();
+    }
+
+    public Person choosePersonByName() {
+        System.out.println("Wybierz osobe:");
+        for (Person p : storage.persons) {
+            System.out.println(p);
+        }
+        System.out.println("Podaj imie: ");
+        String name = sc.nextLine();
+        chosenPerson = null;
+        for (Person p : storage.persons) {
+            if (name.equals(p.getName())) {
+                chosenPerson = p;
+                break;
+            }
+        }
+        return chosenPerson;
+    }
+
+    public Drink chooseDrinkByName() {
+        System.out.println("Wybierz drinka:");
+        for (Drink d : storage.drinks) {
+            System.out.println(d);
+        }
+        System.out.println("Podaj nazwe drinka:");
+        String name = sc.nextLine();
+        chosenDrink = null;
+        for (Drink d : storage.drinks) {
+            if (name.equals(d.getName())) {
+                chosenDrink = d;
+                break;
+            }
+
+        }
+        return chosenDrink;
     }
 
 }
