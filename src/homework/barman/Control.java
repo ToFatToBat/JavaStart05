@@ -1,28 +1,31 @@
 package homework.barman;
 
 import java.util.Scanner;
-import homework.barman.Person;
-import homework.barman.Storage;
 
 public class Control {
+    Storage storage = new Storage();
+
     Scanner sc = new Scanner(System.in);
     public Control() {
 
 
+        Options options;
         do {
-            Options options;
 
             printOptions();
             options = Options.valueOf(sc.nextLine());
             switch (options) {
                 case PERSON:
-
-
+                    readAndCreatePerson();
+                case DRINK:
+                    readAndCreateDrink();
+                case ORDER:
+                    readAndCreateOrder();
+                case EXIT:
+                    exit();
             }
 
-
-
-        }while ();
+        } while (options != Options.EXIT);
     }
 
     public void printOptions() {
@@ -42,7 +45,9 @@ public class Control {
         int age = sc.nextInt();
         sc.nextLine();
 
-        return new Person(name, surname, age);
+        Person person= new  Person(name, surname, age);
+        storage.addPerson(person);
+        return person;
 
     }
 
@@ -55,12 +60,24 @@ public class Control {
         System.out.println("Czy posiada alkohol? [true/false]");
         boolean isAlcohol = sc.hasNext();
 
-        return new Drink(name, price, isAlcohol);
+        Drink drink = new Drink(name, price, isAlcohol);
+        storage.addDrink(drink);
+        return drink;
     }
 
-    public Barman readAndCreateOrder() {
-        System.out.println("Podaj osobe zamawiajaca:");
-        String person = sc.
+    public void readAndCreateOrder() {
+        System.out.println("Aby zlozyc zamowienie wybiez osobe:");
+        for (Person p: storage.persons){
+            System.out.println(p);
+        }
+        System.out.println("Wybierz drinka: ");
+        for (Drink d: storage.drinks){
+            System.out.println(d);
+        }
+    }
+
+    public void exit() {
+        System.out.println("Do zobaczenia.");
     }
 
 }
