@@ -17,12 +17,18 @@ public class Control {
             switch (options) {
                 case PERSON:
                     readAndCreatePerson();
+                    break;
                 case DRINK:
                     readAndCreateDrink();
+                    break;
                 case ORDER:
                     readAndCreateOrder();
+                    break;
                 case EXIT:
                     exit();
+                    break;
+                default:
+                    System.out.println("Brak takiej opcji, wpisz opcje jeszcze raz.");
             }
 
         } while (options != Options.EXIT);
@@ -58,7 +64,7 @@ public class Control {
         double price = sc.nextDouble();
         sc.nextLine();
         System.out.println("Czy posiada alkohol? [true/false]");
-        boolean isAlcohol = sc.hasNext();
+        boolean isAlcohol = sc.nextBoolean();
 
         Drink drink = new Drink(name, price, isAlcohol);
         storage.addDrink(drink);
