@@ -4,9 +4,9 @@ package homework.triangle;
 
 
 public class Shape {
-    int angleOne;
-    int angleTwo;
-    int angleThree;
+    private int angleOne;
+    private int angleTwo;
+    private int angleThree;
 
     public Shape(int angleOne, int angleTwo, int angleThree) {
         this.angleOne = angleOne;
